@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+
+	<h2>从json生成页面</h2>
+
+
+	<body>
+		<p>获取到了json数据（远程API 或 本地 xxx.json）, 使用jQeury生成了HTML表格页面进行展示</p>
+
+		如果从远端API 接口加载数据, 其加载时间会稍慢一些, 约2-4秒之间
+		<table id="news" border="1">
+			<tbody></tbody>
+		</table>
+	</body>
+	<script>
+		 
+		 // -- 本地请求地址（将servlet 请求的 top250 数据另存在本地, 不跨站, 便于本地调试）
+		 var url = "JsonDoubanAction.json"; //文件请求
+		 // -- 远程请求地址 Servlet 请求
+		 // ---- 相对链接便于在 tomcat servlet 中使用
+		 //url = "../JsonDoubanAction"; //servlet 请求
+		 // ---- 绝对链接便于在 atom-live-server localhost:3000 端口中调试
+		 // 需要在servlet 中添加头以放开限制 response.addHeader("Access-Control-Allow-Origin", "*");
+		 //url = "http://localhost:8080/ShiyanlouPhoto/JsonDoubanAction";
+		 
+		 //.getJSON() 相当于简写的 .ajax()
+		 //.getJSON() 参考文档: http://www.css88.com/jqapi-1.9/jQuery.getJSON/
+		 
+		 $.getJSON(url, parse_data); 
+		 function parse_data(data){ 
+		 // 上面2句的写法与下面这1句相同, 相当于定义使用一个有名函数而不是像json1中的匿名函数:	 
+		 //$.getJSON(url, function(data) {
+		 			var tbl_body = "";
+		 			var odd_even = false;
+					var count = 0;
+		 			// $.each(data, function() { // 因 json 数据格式变化, 从json1的对象遍历到json2数组遍历
+		 		  for (var i = 0; i< data.length; i++) {
+					var tbl_row = "";
+		 				//$.each(this, function(k, v) {
+
+		 					v = data[i];
+
+		 					tbl_row ="";
+		 					tbl_row += "<td>" + count +" " + v.itemID + "</td>";
+		 					tbl_row += "<td>" + v.itemname + "</td>";
+		 					tbl_row += "<td>" + v.itemnote + "</td>";
+                                                        tbl_row += "<td>" + v.itemprice + "</td>";
+		 					tbl_row += "<td> <img height=120 width=90 src=" + v.itemicon + "></td>";
+		 					tbl_body += "<tr class=\"" + (odd_even ? "odd" : "even") + "\">" + tbl_row + "</tr>";
+		 					odd_even = !odd_even;
+		 					console.log(count , v);
+							count ++;
+					}
+
+		 			$("#news tbody").html(tbl_body);
+		 		}
+		 		// ); //-使用匿名函数, 需要去掉这里的注释
+	</script>
+
+</html>
