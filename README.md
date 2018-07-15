@@ -6,7 +6,6 @@
 # 项目分层总览
 * 注册页面
 ![](https://github.com/adrianbabe/unGenuis/blob/master/unGenunis/web/img/img/%E6%B3%A8%E5%86%8C.png)
-* 登录页面
 ![](https://github.com/https://github.com/adrianbabe/unGenuis/blob/master/unGenunis/web/img/img/%E7%99%BB%E5%BD%95.png)
 * 商品界面
 ![](https://github.com/adrianbabe/unGenuis/blob/master/unGenunis/web/img/img/%E5%95%86%E5%93%81%E7%95%8C%E9%9D%A2.png)
@@ -16,6 +15,7 @@
 ![](https://github.com/adrianbabe/unGenuis/blob/master/unGenunis/web/img/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180715154324.png)
 * 结算页面
 ![](https://github.com/adrianbabe/unGenuis/blob/master/unGenunis/web/img/img/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20180715154205.png)
+储存
 
 ## 开发环境
 * Java SE Development Kit 8 Downloads
@@ -27,4 +27,9 @@
 * 运用JSON构造HTML代码，并通过mvc整体整合项目的外部环境和外部搭构
 
 ## 文件介绍
-* web页文件夹：储存
+* web文件夹：存储前端相关信息
+  css子文件夹：存储需要使用的CSS样式
+  fonts子文件夹：存储css中使用的字体
+  images子文件夹：存储使用的相关图片
+  js文件夹：存储需要使用的js文件
+* src文件夹：存储使用的JAVA类
